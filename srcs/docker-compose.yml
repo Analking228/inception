@@ -9,7 +9,7 @@ services:
     image: nginx
     restart: always
     networks:
-      - kshanti
+      - cjani-net
     ports:
       - "443:443"
     volumes:
@@ -24,7 +24,7 @@ services:
     image: wordpress
     restart: always
     networks:
-      - kshanti
+      - cjani-net
     env_file:
       - .env
     volumes:
@@ -35,7 +35,7 @@ services:
     image: mariadb
     restart: always
     networks:
-      - kshanti
+      - cjani-net
     volumes:
       - mariadb:/var/lib/mysql
     env_file:
@@ -56,5 +56,5 @@ volumes:
       device: /home/${USER}/data/wordpress
 
 networks:
-  kshanti:
+  cjani-net:
     driver: bridge
