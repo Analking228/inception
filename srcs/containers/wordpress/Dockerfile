@@ -7,13 +7,12 @@ RUN mkdir -p /run/php /var/www/html
 COPY www.conf ./
 RUN mv www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
-COPY wp.sh ./
+COPY wordpress.sh ./
 
-RUN chmod +x wp.sh
+RUN chmod +x wordpress.sh
 
-ENTRYPOINT [ "bash", "wp.sh" ]
+ENTRYPOINT [ "bash", "wordpress.sh" ]
 
 EXPOSE 9000
 
 CMD /usr/sbin/php-fpm7.3 -F -R
-
