@@ -9,8 +9,8 @@ else
    wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
    chmod +x wp-cli.phar
    mv wp-cli.phar /usr/local/bin/wp
-   mv ./wp-config.php /var/www/html/
    cd /var/www/html/
+   mv ./wp-config.php /var/www/html/
    wp core download --allow-root
    echo "Configuring Wordpress parameters"
    wp config create --allow-root --path=/var/www/html/ --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_PASS} --dbhost=${DB_HOST} --dbprefix=${DB_PREFIX} --skip-check
