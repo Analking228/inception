@@ -3,7 +3,7 @@ mkdir -p /run/php/
 touch /run/php/php7.3-fpm.pid
 chown -R www-data:www-data /var/www/*
 chmod -R 755 /var/www/*
-if ![ -e /var/www/html/wp-config.php ]
+if ! -e /var/www/html/wp-config.php
 then
    wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
    chmod +x wp-cli.phar
