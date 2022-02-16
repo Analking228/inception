@@ -5,7 +5,7 @@ services:
     depends_on:
       - wordpress
     container_name: nginx
-    build: ./requirements/nginx
+    build: ./containers/nginx
     image: nginx
     restart: always
     networks:
@@ -20,7 +20,7 @@ services:
     depends_on:
       - mariadb
     container_name: wordpress
-    build: ./requirements/wordpress
+    build: ./containers/wordpress
     image: wordpress
     restart: always
     networks:
@@ -31,7 +31,7 @@ services:
       - wordpress:/var/www/html
   mariadb:
     container_name: mariadb
-    build: ./requirements/mariadb
+    build: ./containers/mariadb
     image: mariadb
     restart: always
     networks:
