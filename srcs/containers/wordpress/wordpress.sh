@@ -1,4 +1,4 @@
-sleep 10
+sleep 30
 mkdir -p /run/php/
 touch /run/php/php7.3-fpm.pid
 chown -R www-data:www-data /var/www/*
