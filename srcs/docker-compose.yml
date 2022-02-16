@@ -1,19 +1,15 @@
 version: "3.9"
 
 services:
-  nginx:
-    depends_on:
-      - wordpress
-    container_name: nginx
-    build: ./containers/nginx
-    image: nginx
+  mariadb:
+    container_name: mariadb
+    build: ./containers/mariadb
+    image: mariadb
     restart: always
     networks:
       - cjani-net
-    ports:
-      - "443:443"
     volumes:
-      - wordpress:/var/www/html
+      - mariadb:/var/lib/mysql
     env_file:
       - .env
   wordpress:
@@ -29,15 +25,19 @@ services:
       - .env
     volumes:
       - wordpress:/var/www/html
-  mariadb:
-    container_name: mariadb
-    build: ./containers/mariadb
-    image: mariadb
+  nginx:
+    depends_on:
+      - wordpress
+    container_name: nginx
+    build: ./containers/nginx
+    image: nginx
     restart: always
     networks:
       - cjani-net
+    ports:
+      - "443:443"
     volumes:
-      - mariadb:/var/lib/mysql
+      - wordpress:/var/www/html
     env_file:
       - .env
 
