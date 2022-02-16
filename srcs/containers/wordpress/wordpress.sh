@@ -12,7 +12,6 @@ else
    mv wp-cli.phar /usr/local/bin/wp
    cd /var/www/html/
    wp core download --allow-root
-   mv ./wp-config.php /var/www/html/
    echo "Configuring Wordpress parameters"
    wp config create --allow-root --path=/var/www/html/ --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_PASS} --dbhost=${DB_HOST} --dbprefix=${DB_PREFIX} --skip-check
    wp core install --allow-root --path=/var/www/html/ --url=${DB_URL} --title="My Title" --admin_user=${WP_ADMIN_USER} --admin_password=${WP_ADMIN_PASSWORD} --admin_email=${WP_MAIL}
