@@ -1,0 +1,60 @@
+version: "3.9"
+
+services:
+  nginx:
+    depends_on:
+      - wordpress
+    container_name: nginx
+    build: ./requirements/nginx
+    image: nginx
+    restart: always
+    networks:
+      - kshanti
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/html
+    env_file:
+      - .env
+  wordpress:
+    depends_on:
+      - mariadb
+    container_name: wordpress
+    build: ./requirements/wordpress
+    image: wordpress
+    restart: always
+    networks:
+      - kshanti
+    env_file:
+      - .env
+    volumes:
+      - wordpress:/var/www/html
+  mariadb:
+    container_name: mariadb
+    build: ./requirements/mariadb
+    image: mariadb
+    restart: always
+    networks:
+      - kshanti
+    volumes:
+      - mariadb:/var/lib/mysql
+    env_file:
+      - .env
+
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/mariadb
+  wordpress:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/wordpress
+
+networks:
+  kshanti:
+    driver: bridge
