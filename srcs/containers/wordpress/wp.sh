@@ -19,35 +19,3 @@ else
    wp user create --allow-root ${WP_NEW_USER} ${WP_NEW_USE_MAIL} --user_pass=${WP_NEW_USE_PASSWORD}
  fi                              
  exec "$@"
-
-####################
-#   Options       #
-###################
-#
-#--url=<url>
-#--title=<site-title>
-#--admin_user=<username>
-#[--admin_password=<password>]
-#--admin_email=<email>
-#[--skip-email]
-
-
-#########################
-#   GLOBAL PARAMETERS   #
-#########################
-#
-#--path=<path>
-#--url=<url>
-#--ssh=[<scheme>:][<user>@]<host\|container>[:<port>][<path>]
-#--http=<http>
-#--user=<id\|login\|email>
-#--skip-plugins[=<plugins>]
-#--skip-themes[=<themes>]
-#--skip-packages
-#--require=<path>
-#--exec=<php-code>
-#--context=<context>
-#--[no-]color
-#--debug[=<group>]
-#--prompt[=<assoc>]
-#--quiet
