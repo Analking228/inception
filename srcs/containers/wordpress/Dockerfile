@@ -13,6 +13,8 @@ RUN chmod +x wordpress.sh
 
 ENTRYPOINT [ "bash", "wordpress.sh" ]
 
+RUN sleep 10
+
 EXPOSE 9000
 
 CMD /usr/sbin/php-fpm7.3 -F -R
